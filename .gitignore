@@ -2,3 +2,5 @@ tests
 *.[oa]
 *~
 *.out
+temp
+release

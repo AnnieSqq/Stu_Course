@@ -1,3 +1,5 @@
+#ifndef MYPROJECT_STRU_STU_H
+#define MYPROJECT_STRU_STU_H
 struct student{
     int id;//学号
     char *name;//姓名
@@ -6,3 +8,4 @@ struct student{
 };
 typedef struct student StuNode;
 typedef StuNode* Stup;
+#endif

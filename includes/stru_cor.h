@@ -1,3 +1,5 @@
+#ifndef MYPROJECT_STRU_COR_H
+#define MYPROJECT_STRU_COR_H
 struct course{
       int id;//课程号
       char *name;//课程名
@@ -9,3 +11,4 @@ struct course{
 };
 typedef struct course CorNode;
 typedef CorNode* Corp;
+#endif

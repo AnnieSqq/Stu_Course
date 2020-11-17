@@ -4,6 +4,7 @@
 using namespace std;
 int insertCor(char* content);
 int removeCor(int line);
-int changeCor(int line,char*);
-map<int,int> findCor(int col,char* keys);
+int changeCor(int line,char* content);
+int findCorLines(int col, char *keys, map<int, int> &lines);
+string findCor(int line);
 #endif

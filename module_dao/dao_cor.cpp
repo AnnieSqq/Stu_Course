@@ -143,7 +143,7 @@ string findCor(int line)
     return res;
 } //根据行号返回该行的内容，失败返回空串
 
-int main(void)
+int static mainDaoCor(void)
 {
     // cout<<insertCor("454883-计算机网络-必修课-56-3.5-64-80")<<endl;
     // cout<<removeCor(18)<<endl;

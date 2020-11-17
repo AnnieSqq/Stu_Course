@@ -142,7 +142,7 @@ string findStu(int line)
     return res;
 } //根据行号返回该行的内容，失败返回空串
 
-int main(void)
+int static mainDaoStu(void)
 {
     // cout<<insertStu("456123-小红-02：25：66-62")<<endl;
     // cout<<removeStu(18)<<endl;

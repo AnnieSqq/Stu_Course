@@ -2,8 +2,9 @@
 #include "act_stu.h"
 int main()
 {
-    addStu();
-    addCourse();
+    // addStu();
+    // addCourse();
+    deleteCourse();
     return 0;
 }
 

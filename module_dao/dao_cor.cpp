@@ -74,7 +74,7 @@ int changeCor(int line, char *content)
     puts("changeCor\n-------------------------------");
     return lines;
 } //根据行号覆盖修改内容，返回当前行数，失败返回-1
-int findCorLines(int col, char *keys, map<int, int> &lines)
+int findCorLines(int col, const char *keys, map<int, int> &lines)
 {
     //如果传入的map不为空，也失败
     if (!lines.empty())

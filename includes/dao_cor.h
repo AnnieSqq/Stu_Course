@@ -5,6 +5,6 @@ using namespace std;
 int insertCor(char* content);
 int removeCor(int line);
 int changeCor(int line,char* content);
-int findCorLines(int col, char *keys, map<int, int> &lines);
+int findCorLines(int col, const char *keys, map<int, int> &lines);
 string findCor(int line);
 #endif

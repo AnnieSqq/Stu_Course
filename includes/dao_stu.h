@@ -5,7 +5,7 @@ using namespace std;
 int insertStu(char* content);
 int removeStu(int line);
 int changeStu(int line,char* content);
-int findStuLines(int col, char *keys, map<int, int> &lines);
+int findStuLines(int col, const char *keys, map<int, int> &lines);
 string findStu(int line);
 #endif
 

@@ -103,7 +103,6 @@ int findCorLines(int col, const char *keys, map<int, int> &lines)
     int line = 0, i = 1;
     while (fgets(buff, 1023, fp))
     {
-        cout << buff;
         if (!(line = atoi(buff)))
             return -1;
         lines[i++] = line;
@@ -111,7 +110,6 @@ int findCorLines(int col, const char *keys, map<int, int> &lines)
     //删除文件temp.txt
     system("rm -f temp.txt");
     fclose(fp);
-    puts("findCorLines\n--------------------------------");
     return lines.size();
 } //查找col列的匹配keys的内容的行号到集合lines中，返回搜寻到的数量，失败返回-1。参数map必须为空
 

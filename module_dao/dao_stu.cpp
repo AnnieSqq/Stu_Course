@@ -75,7 +75,7 @@ int changeStu(int line, char *content)
     puts("changeStu\n-------------------------------");
     return lines;
 } //根据行号覆盖修改内容，返回当前行数，失败返回-1
-int findStuLines(int col, char *keys, map<int, int> &lines)
+int findStuLines(int col, const char *keys, map<int, int> &lines)
 {
     //如果传入的map不为空，也失败
     if (!lines.empty())
@@ -102,7 +102,6 @@ int findStuLines(int col, char *keys, map<int, int> &lines)
     int line = 0, i = 1;
     while (fgets(buff, 1023, fp))
     {
-        cout << buff;
         if (!(line = atoi(buff)))
             return -1;
         lines[i++] = line;
@@ -110,7 +109,6 @@ int findStuLines(int col, char *keys, map<int, int> &lines)
     //删除文件temp.txt
     system("rm -f temp.txt");
     fclose(fp);
-    puts("findStuLines\n--------------------------------");
     return lines.size();
 } //查找col列的匹配keys的内容的行号到集合lines中，返回搜寻到的数量，失败返回-1。参数map必须为空
 

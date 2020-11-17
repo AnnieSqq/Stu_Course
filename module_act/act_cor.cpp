@@ -229,6 +229,7 @@ CorNode *lookCourse()
     int col = atoi(corkey.data()) == 0 ? 2 : 1;
     if(findCorLines(col, corkey.data(), corlines)<=0){
         puts("没找到");
+        return NULL;
     }
     printf("课程编号\t课程名称\t课程类型\t课程学时\t课程学分\t已选人数\t最大人数\n");
     for(int i = 1;i<=corlines.size();++i){
@@ -242,6 +243,7 @@ CorNode *lookCourse()
             corp->choosedBy,
             corp->maxChoose
         );
+        free(corp);
     }
     puts("lookCourse");
     return NULL;
@@ -251,7 +253,8 @@ int listCourses()
     map<int, int> corlines;
     //如果输入的是以不为零的数字开头，则在课程号中找，否则在课程名中查找
     if(findCorLines(1, "", corlines)<=0){
-        puts("没找到");
+        puts("没有");
+        return 0;
     }
     printf("课程编号\t课程名称\t课程类型\t课程学时\t课程学分\t已选人数\t最大人数\n");
     for(int i = 1;i<=corlines.size();++i){

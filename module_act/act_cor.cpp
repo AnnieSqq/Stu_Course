@@ -4,7 +4,7 @@
 CorNode *addCourse()
 {
     puts("addCourse");
-    insertCor("");
+    insertCor("jdsahdjas");
     return NULL;
 } //添加一个课程，命令行询问课程信息，返回添加的课程
 CorNode *deleteCourse(int id)

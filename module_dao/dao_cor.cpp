@@ -8,7 +8,7 @@ int getCorLines()
     FILE *fp = NULL;
     //首先获取当前的行数
     int lines = 0;
-    if (!(fp = fopen("../dbs/courses", "a+")))
+    if (!(fp = fopen("dbs/courses", "a+")))
         return -1;
     while (!feof(fp))
     {
@@ -27,7 +27,7 @@ int insertCor(char *content)
     //首先获取当前的行数
     int lines = getCorLines();
     //不必查找是否重复，因为课程号由操作端自动分配，因此不会存在重复课程号的情况
-    if (!(fp = fopen("../dbs/courses", "a+")))
+    if (!(fp = fopen("dbs/courses", "a+")))
         return -1;
     //格式应该也不会错，因为是操作端传过来的
     //判断末尾是否有回车
@@ -36,7 +36,7 @@ int insertCor(char *content)
         record = record + "\n";
     const char *p = record.data();
     char buff[1024] = {0};
-    sprintf(buff, "echo -n '%s' | tee -a ../dbs/courses", p);
+    sprintf(buff, "echo -n '%s' | tee -a dbs/courses", p);
     system(buff);
     fclose(fp);
     puts("insertCor\n----------------------------------");
@@ -52,7 +52,7 @@ int removeCor(int line)
         return -1;
     }
     char buff[1024] = {0};
-    sprintf(buff, "sed -n -i '%dd;p' ../dbs/courses", line);
+    sprintf(buff, "sed -n -i '%dd;p' dbs/courses", line);
     // cout<<buff<<endl;
     system(buff);
     puts("removeCor\n----------------------------------");
@@ -69,7 +69,7 @@ int changeCor(int line, char *content)
     }
     char buff[1024] = {0};
     //这里不用touch因为前面有获取行数，因此文件一定存在
-    sprintf(buff, "sed -i '%dc %s' ../dbs/courses", line, content);
+    sprintf(buff, "sed -i '%dc %s' dbs/courses", line, content);
     system(buff);
     puts("changeCor\n-------------------------------");
     return lines;
@@ -88,8 +88,8 @@ int findCorLines(int col, char *keys, map<int, int> &lines)
     }
     char buff[1024] = {0};
     //在操作表之前先touch一下以防不存在
-    system("touch ../dbs/courses");
-    sprintf(buff, "cat ../dbs/courses\
+    system("touch dbs/courses");
+    sprintf(buff, "cat dbs/courses\
            |awk -F '-' '{print $%d}'\
            |grep -n '%s'\
            |awk -F ':' '{print $1}' > temp.txt",
@@ -126,7 +126,7 @@ string findCor(int line)
         return "";
     }
     //将制定行的内容写到temp.txt中
-    sprintf(buff, "sed -n '%dp' ../dbs/courses > temp.txt", line);
+    sprintf(buff, "sed -n '%dp' dbs/courses > temp.txt", line);
     system(buff);
     //读取获取到的那一行的内容
     FILE *fp = NULL;

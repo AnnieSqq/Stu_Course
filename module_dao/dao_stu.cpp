@@ -8,7 +8,7 @@ int getStuLines()
     FILE *fp = NULL;
     //首先获取当前的行数
     int lines = 0;
-    if (!(fp = fopen("../dbs/students", "a+")))
+    if (!(fp = fopen("dbs/students", "a+")))
         return -1;
     while (!feof(fp))
     {
@@ -27,7 +27,7 @@ int insertStu(char *content)
     //首先获取当前的行数
     int lines = getStuLines();
     //不必查找是否重复，因为学号由操作端自动分配，因此不会存在重复学号的情况
-    if (!(fp = fopen("../dbs/students", "a+")))
+    if (!(fp = fopen("dbs/students", "a+")))
         return -1;
     //格式应该也不会错，因为是操作端传过来的
     //判断末尾是否有回车
@@ -36,7 +36,7 @@ int insertStu(char *content)
         record = record + "\n";
     const char *p = record.data();
     char buff[1024] = {0};
-    sprintf(buff, "echo -n '%s' | tee -a ../dbs/students", p);
+    sprintf(buff, "echo -n '%s' | tee -a dbs/students", p);
     system(buff);
     fclose(fp);
     puts("insertStu\n----------------------------------");
@@ -52,7 +52,7 @@ int removeStu(int line)
         return -1;
     }
     char buff[1024] = {0};
-    sprintf(buff, "sed -n -i '%dd;p' ../dbs/students", line);
+    sprintf(buff, "sed -n -i '%dd;p' dbs/students", line);
     // cout<<buff<<endl;
     system(buff);
     puts("removeStu\n----------------------------------");
@@ -69,7 +69,7 @@ int changeStu(int line, char *content)
     }
     char buff[1024] = {0};
     // cout<<content<<endl;
-    sprintf(buff, "sed -i '%dc %s' ../dbs/students", line, content);
+    sprintf(buff, "sed -i '%dc %s' dbs/students", line, content);
     system(buff);
     // cout<<buff<<endl;
     puts("changeStu\n-------------------------------");
@@ -88,7 +88,7 @@ int findStuLines(int col, char *keys, map<int, int> &lines)
         return -1;
     }
     char buff[1024] = {0};
-    sprintf(buff, "cat ../dbs/students\
+    sprintf(buff, "cat dbs/students\
            |awk -F '-' '{print $%d}'\
            |grep -n '%s'\
            |awk -F ':' '{print $1}' > temp.txt",
@@ -125,7 +125,7 @@ string findStu(int line)
         return "";
     }
     //将制定行的内容写到temp.txt中
-    sprintf(buff, "sed -n '%dp' ../dbs/students > temp.txt", line);
+    sprintf(buff, "sed -n '%dp' dbs/students > temp.txt", line);
     system(buff);
     //读取获取到的那一行的内容
     FILE *fp = NULL;

@@ -12,7 +12,8 @@ StuNode *makeStu(const char *content)
     StuNode *stup = (StuNode *)malloc(sizeof(StuNode));
     if (content == "")
     {
-        stup->id = stuidMaker++;
+        map<int,int> lines;
+        stup->id = findStuLines(1,"",lines) + stuidMaker;
         stup->name = "";
         stup->choose = {0};
         stup->allCredit = 0;

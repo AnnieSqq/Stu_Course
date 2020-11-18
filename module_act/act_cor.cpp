@@ -22,7 +22,8 @@ CorNode *makeCor(const char *content)
     CorNode *corp = (CorNode *)malloc(sizeof(CorNode));
     if (content == "")
     {
-        corp->id = coridMaker++;
+        map<int,int> lines;
+        corp->id = findCorLines(1,"",lines) + coridMaker;
         corp->name = "";
         corp->property = "默认";
         corp->hours = 0;
